@@ -1,0 +1,89 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.article {
+    background-color: #FFFFFF;
+}
+.article .title {
+    padding: 0 .4rem;
+}
+.article .title h1 {
+    font-size: .533rem;
+    font-weight: 400;
+    font-family: PingFangSC-Semibold, sans-serif; 
+    margin: .8rem 0 .4rem;
+}
+.article .title p {
+    font-size: .35rem;
+    color: #999;
+    margin: 0 0 .8rem;
+}
+.article .content {
+    margin: 0 .4rem;
+    padding-bottom: .4rem;
+}
+.article .content > p {
+    font-size:   .43rem;
+    line-height: .64rem;
+    margin: .533rem 0;
+}
+.article .content > img {
+    width: 100%;
+    margin: .266rem 0;
+}
+.article .content > p.main_title {
+    font-family: PingFangSC-Semibold, sans-serif;
+}
+
+.recommend {
+    display: none;
+    background-color: #FFFFFF;
+    margin-top: .3rem;
+    position: relative;
+    overflow: hidden;
+}
+.recommend .recommend-title {
+    padding: .4rem .4rem .1rem;
+    font-size: .4rem;
+    font-weight: 400;
+    text-align: left;
+    color: #333;
+}
+.recommend .recommend-item {
+    margin: 0rem .4rem;
+    padding: .3rem 0;
+    border-bottom: 1px solid #eee;
+    display: -webkit-flex;
+    display:         flex;
+    flex-direction: row;
+}
+.recommend-pic {
+    width:  3.6rem;
+    height: 2.4rem;
+    background: red;
+}
+.recommend-pic img {
+    width: 100%;
+}
+.introduce {
+    width:  5.2rem;
+    height: 2.4rem;
+    margin-left: .4rem;
+}
+.introduce h3 {
+    font-size: .4rem;
+    font-weight: 400;
+    color: #000;
+    margin: .66rem 0 .2rem 0;
+}
+.introduce p {
+    font-size: .3rem;
+    color: #999
+}
