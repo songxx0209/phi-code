@@ -39,6 +39,7 @@ body {
     margin: .266rem 0;
 }
 .article .content > p.main_title {
+    font-weight: 400;
     font-family: PingFangSC-Semibold, sans-serif;
 }
 
