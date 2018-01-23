@@ -4,8 +4,8 @@
     padding: 0;
 }
 body {
-    background-color: #f8f8f8;
     color: #333;
+    background-color: #f8f8f8;
 }
 
 .article {
@@ -43,20 +43,19 @@ body {
 }
 
 .recommend {
-    display: none;
     background-color: #FFFFFF;
     margin-top: .3rem;
     position: relative;
     overflow: hidden;
 }
-.recommend .recommend-title {
+.rcmd-title {
     padding: .4rem .4rem .1rem;
     font-size: .4rem;
     font-weight: 400;
     text-align: left;
     color: #333;
 }
-.recommend .recommend-item {
+.rcmd-item {
     margin: 0rem .4rem;
     padding: .3rem 0;
     border-bottom: 1px solid #eee;
@@ -64,13 +63,19 @@ body {
     display:         flex;
     flex-direction: row;
 }
-.recommend-pic {
+.rcmd-item:last-child {
+    border-bottom:none;
+}
+.rcmd-pic {
     width:  3.6rem;
     height: 2.4rem;
-    background: red;
+    overflow: hidden;
+    border-radius: .13rem;
+    -moz-border-radius: .13rem;
 }
-.recommend-pic img {
+.rcmd-pic img {
     width: 100%;
+    height: 100%;
 }
 .introduce {
     width:  5.2rem;
@@ -81,9 +86,16 @@ body {
     font-size: .4rem;
     font-weight: 400;
     color: #000;
-    margin: .66rem 0 .2rem 0;
+    margin: .4rem 0 .2rem 0;
 }
 .introduce p {
     font-size: .3rem;
     color: #999
+}
+
+.footer {
+    font-size: .4rem;
+    color: #999;
+    text-align: center;
+    padding: .5rem 0;
 }

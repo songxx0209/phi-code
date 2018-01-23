@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>拒绝不健康的减肥方式</title>
 	<link rel="stylesheet" href="css/common.css">
-	<script type="text/javascript" src="./js/adaptive.js"></script>
+	<script type="text/javascript" src="js/adaptive.js"></script>
 </head>
 <body>
 	<div class="article">
@@ -39,32 +39,17 @@
             <p class="main_title">·&nbsp;不吃某类食物</p>
             <p>除非你有过敏症，否则削减整类食品：乳制品，淀粉，坚果或鸡蛋会让你营养不良，减肥未必成功，却付出了健康的代价。</p>
         </div>
-
+    
 	</div>
-	
-	<div class="recommend">
-
-		<h1 class="recommend-title">相关推荐</h1>
-
-		<div class="recommend-item">
-			<div class="recommend-pic">
-				<img src="">
-			</div>
-			<div class="introduce">
-				<h3>提升基础代谢率</h3>
-				<p>#健康贴士</p>
-			</div>
-		</div>
-
-		<div class="recommend-item">
-			<div class="recommend-pic"></div>
-			<div class="introduce">
-				<h3>提升基础代谢率</h3>
-				<p>#健康贴士</p>
-			</div>
-		</div>
-
-	</div>
-
+    <div class="recommend">
+        <h1 class="rcmd-title">相关推荐</h1>
+        <div id="rcmdContainer"></div>
+    </div>
+    <p class="footer">已经到底了</p>
+    
+    <script type="text/javascript">
+        var param = { resId: 5, type: 'essay' };
+    </script>
+    <script type="text/javascript" src="js/request.js"></script>
 </body>
 </html>
