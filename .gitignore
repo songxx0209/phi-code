@@ -1,6 +1,10 @@
-phicomm-health-pages
-phicomm-health-pages.zip
 .DS_Store
+
+package-lock.json
+phiHealth-pages/node_modules
+phiHealth-pages/dist
+phiHealth-pages/package-lock.json
+
 # Logs
 logs
 *.log

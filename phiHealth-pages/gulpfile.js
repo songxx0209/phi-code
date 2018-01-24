@@ -12,7 +12,7 @@ var imagemin = require('gulp-imagemin');
 gulp.task('html' , function(){
     gulp.src("phicomm/*.html")
         .pipe(htmlminify())
-        .pipe(gulp.dest("phicomm-health-pages/"))
+        .pipe(gulp.dest("dist/"))
 });
 
 // 压缩 css 文件
@@ -23,7 +23,7 @@ gulp.task('css', function () {
     // 2. 压缩文件
     	.pipe(minifyCSS())
     // 3. 另存为压缩文件
-    	.pipe(gulp.dest('phicomm-health-pages/css'))
+    	.pipe(gulp.dest('dist/css'))
 })
 
 
@@ -35,7 +35,7 @@ gulp.task('script', function() {
     // 2. 压缩文件
     	.pipe(uglify())
     // 3. 另存压缩后的文件
-    	.pipe(gulp.dest('phicomm-health-pages/js'))
+    	.pipe(gulp.dest('dist/js'))
 })
 
 // 压缩图片任务
@@ -48,7 +48,7 @@ gulp.task('images', function () {
             progressive: true
         }))
     // 3. 另存图片
-        .pipe(gulp.dest('phicomm-health-pages/images'))
+        .pipe(gulp.dest('dist/images'))
 });
 
 
