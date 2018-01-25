@@ -8,9 +8,12 @@ var uglify = require('gulp-uglify');
 // 获取 gulp-imagemin 模块
 var imagemin = require('gulp-imagemin');
 
+const nunjucks = require('gulp-nunjucks');
+
 
 gulp.task('html' , function(){
-    gulp.src("phicomm/*.html")
+    return gulp.src("phicomm/*.html")
+        .pipe(nunjucks.compile())
         .pipe(htmlminify())
         .pipe(gulp.dest("dist/"))
 });
@@ -31,7 +34,7 @@ gulp.task('css', function () {
 // 在命令行使用 gulp script 启动此任务
 gulp.task('script', function() {
     // 1. 找到文件
-    gulp.src('phicomm/js/*.js')
+    gulp.src(['phicomm/js/*.js', 'phicomm/js/**/*.js'])
     // 2. 压缩文件
     	.pipe(uglify())
     // 3. 另存压缩后的文件
@@ -50,7 +53,6 @@ gulp.task('images', function () {
     // 3. 另存图片
         .pipe(gulp.dest('dist/images'))
 });
-
 
 
 gulp.task('default', ['html', 'css', 'script', 'images']);

@@ -54,17 +54,9 @@
         </div>
 
 	</div>
-	<div class="recommend">
-        <h1 class="rcmd-title">相关推荐</h1>
-        <div id="rcmdContainer"></div>
-    </div>
-    <p class="footer">已经到底了</p>
-	
-	<script type="text/javascript">
-        var param = { resId: 10, type: 'essay' };
-        var observer = lozad();
-        observer.observe();
-    </script>
-    <script type="text/javascript" src="js/request.js"></script>
+
+	{% block common %}
+    {% include "common.html" %}
+    {% endblock %}
 </body>
 </html>

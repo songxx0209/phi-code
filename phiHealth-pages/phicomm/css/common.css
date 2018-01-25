@@ -104,3 +104,56 @@ body {
     text-align: center;
     padding: .5rem 0;
 }
+
+.footersticky{
+    width: 100%;
+    padding: 0 .4rem;
+    box-sizing: border-box;
+    height: 1.20rem;
+    background-color: #ffffff;
+    display: -webkit-flex;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    align-items: center;
+}
+.setimg{
+    width: .80rem;
+    height: .80rem;
+}
+.showimg{
+    width: .80rem;
+    height: .80rem;
+}
+.showdetail{
+    flex:1;
+    margin-left: .21rem;
+}
+.callbackthis{
+    width: 1.50rem;
+    height: .6rem;
+    border-radius: .1rem;
+    background-color: #18cbfd;
+    color: #ffffff;
+    font-size: .28rem;
+    line-height:.6rem ;
+    text-align: center;
+}
+.layer {
+    font-size: .32rem;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+.healthdetail{
+    font-size: .20rem;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+}
