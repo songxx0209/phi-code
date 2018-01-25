@@ -12,8 +12,8 @@ const nunjucks = require('gulp-nunjucks');
 
 
 gulp.task('html' , function(){
-    return gulp.src("phicomm/*.html")
-        .pipe(nunjucks.compile())
+    return gulp.src(['phicomm/templates/*.html', '!phicomm/templates/base.html'])
+        .pipe(nunjucks.compile({}))
         .pipe(htmlminify())
         .pipe(gulp.dest("dist/"))
 });
