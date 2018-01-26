@@ -7,13 +7,13 @@ var minifyCSS = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 // 获取 gulp-imagemin 模块
 var imagemin = require('gulp-imagemin');
-// delete
-// var del = require('del');
+// 清除上次编译的代码
 var clean = require('gulp-clean');  // 删除文件
-
+// 使用类似jinja2的html模版
 var nunjucks = require('gulp-nunjucks');
-var minimist = require('minimist');
 
+// 获取NODE环境变量
+var minimist = require('minimist');
 var knownOptions = {
   string: 'env',
   default: { env: process.env.NODE_ENV || 'production' }
@@ -22,7 +22,6 @@ var options = minimist(process.argv.slice(2), knownOptions);
 
 // 编译后文件的输出地址
 var output = 'test/';
-
 if (options.env.indexOf('test') === -1) {
     output = 'prod/';
 }
@@ -79,7 +78,6 @@ gulp.task('clean', function () {
     gulp.src([output], {read: false})
         .pipe(clean());
 });
-
 // 这个地方有点奇怪哈，按理说应该不用加setTimeout的
 gulp.task('default', ['clean'], function () {
     setTimeout(function() {
