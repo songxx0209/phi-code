@@ -18,7 +18,7 @@ body {
     font-size: .533rem;
     font-weight: 400;
     font-family: PingFangSC-Semibold, sans-serif; 
-    margin: .8rem 0 .4rem;
+    padding: .8rem 0 .4rem;
 }
 .article .title p {
     font-size: .35rem;
@@ -105,6 +105,7 @@ body {
     padding: .5rem 0;
 }
 
+/* 底部分享 - 浮动区域 */
 .footersticky{
     width: 100%;
     padding: 0 .4rem;
@@ -116,6 +117,86 @@ body {
     position: fixed;
     bottom: 0;
     align-items: center;
+}
+.setimg{
+    width: .80rem;
+    height: .80rem;
+}
+.showimg{
+    width: .80rem;
+    height: .80rem;
+}
+.showdetail{
+    flex:1;
+    margin-left: .21rem;
+}
+.callbackthis{
+    width: 1.50rem;
+    height: .6rem;
+    border-radius: .1rem;
+    background-color: #18cbfd;
+    color: #ffffff;
+    font-size: .28rem;
+    line-height:.6rem ;
+    text-align: center;
+}
+.layer {
+    font-size: .32rem;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+.healthdetail{
+    font-size: .20rem;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #999999;
+}
+
+/* 微信分享 - 展示区 */
+.headertop{
+    width: 100%;
+    height: 1.80rem;
+    background-color: #333333;
+    display: none;
+}
+.headercontent{
+    width: 5.08rem;
+    height: .75rem;
+    font-size: .30rem;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    text-align: left;
+    color: #ffffff;
+    float: left;
+    margin-left: 2.6rem;
+    margin-top: 0.54rem;
+}
+.sportsimg{
+    width: 1.0rem;
+    height: 1.0rem;
+    margin-left: .8rem;
+    margin-top: .3rem;
+}
+.footersticky{
+    width: 100%;
+    padding: 0 .4rem;
+    box-sizing: border-box;
+    height: 1.20rem;
+    background-color: #ffffff;
+    display: -webkit-flex;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    align-items: center;
+    display: none;
 }
 .setimg{
     width: .80rem;
