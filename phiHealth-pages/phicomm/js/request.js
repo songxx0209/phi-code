@@ -1,7 +1,16 @@
 
 (function() {
+    // 执行图片懒加载脚本
+    var observer = lozad();
+    observer.observe();
+
+    // 请求推荐文章列表
+    var apiUrl = document.getElementsByTagName('body')[0].getAttribute('data');
     var rcmdContainer = document.getElementById('rcmdContainer');
-    var apiUrl = 'https://test.phicomm.com:3442/blood-pressure-meter/health/discovery/recommend';
+    var urlParams = _GetUrlParams();
+    var resId = urlParams.resouceId || '1';
+
+    var param = { resId: resId, type: 'essay' };
     var params = JSON.stringify(param);
 
     _ajax('post', apiUrl, params, 'application/json', function(res) {
@@ -16,6 +25,21 @@
         }
     });
 
+    //获取Url中的所有参数
+    function _GetUrlParams() {
+        var url = location.search; //获取url中"?"和‘？’符后的字串
+        var theRequest = {};
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);//获取？后面的子串
+            strs = str.split("&");//以&分割成数组
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+
+    // 异步请求
     function _ajax(type, url, param, contentType, callback) {
         if (typeof param == "undefined" && typeof callback == "undefined") {
             param = {};

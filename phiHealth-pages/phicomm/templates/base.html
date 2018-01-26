@@ -8,7 +8,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 	{% endblock %}
 </head>
-<body>
+<body data="{{env}}">
 
 	{% block headerTop %}
 	<div class="headertop">
@@ -38,11 +38,6 @@
 	{% endblock %}
 
     {% block footerSource %}
-    <script type="text/javascript">
-	    var param = { resId: 1, type: 'essay' };
-	    var observer = lozad();
-	    observer.observe();
-	</script>
 	<script type="text/javascript" src="js/request.js"></script>
 	<script type="text/javascript" src="js/common/footerDown.js"></script>
     {% endblock %}

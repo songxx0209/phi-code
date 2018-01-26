@@ -4,17 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "gulp"
+    "test": "gulp --env https://test.phicomm.com:3442/blood-pressure-meter/health/discovery/recommend",
+    "prod": "gulp --env https://device.phicomm.com:3443/blood-pressure-meter/health/discovery/recommend",
+    "gulp": "gulp"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
     "gulp-html-minify": "0.0.14",
     "gulp-imagemin": "^4.1.0",
     "gulp-minify-css": "^1.2.4",
+    "gulp-nunjucks": "^3.1.1",
     "gulp-uglify": "^3.0.0",
-    "gulp-nunjucks": "^3.1.1"
+    "minimist": "^1.2.0"
   }
 }
