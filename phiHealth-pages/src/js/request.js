@@ -8,7 +8,7 @@
     var apiUrl = document.getElementsByTagName('body')[0].getAttribute('data');
     var rcmdContainer = document.getElementById('rcmdContainer');
     var urlParams = _GetUrlParams();
-    var resId = urlParams.resouceId || '1';
+    var resId = urlParams.resourceId || '1';
 
     var param = { resId: resId, type: 'essay' };
     var params = JSON.stringify(param);

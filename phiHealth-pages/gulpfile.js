@@ -25,9 +25,10 @@ var output = 'test/';
 if (options.env.indexOf('test') === -1) {
     output = 'prod/';
 }
+console.log('ss', output);
 
 gulp.task('html' , function(){
-    return gulp.src(['phicomm/templates/*.html', '!phicomm/templates/base.html'])
+    gulp.src(['src/templates/*.html', '!src/templates/base.html'])
         .pipe(nunjucks.compile({
             env: options.env
         }))
@@ -39,7 +40,7 @@ gulp.task('html' , function(){
 // 在命令行使用 gulp css 启动此任务
 gulp.task('css', function () {
     // 1. 找到文件
-    gulp.src('phicomm/css/*.css')
+    gulp.src('src/css/*.css')
     // 2. 压缩文件
     	.pipe(minifyCSS())
     // 3. 另存为压缩文件
@@ -51,7 +52,7 @@ gulp.task('css', function () {
 // 在命令行使用 gulp script 启动此任务
 gulp.task('script', function() {
     // 1. 找到文件
-    gulp.src(['phicomm/js/*.js', 'phicomm/js/**/*.js'])
+    gulp.src(['src/js/*.js', 'src/js/**/*.js'])
     // 2. 压缩文件
     	.pipe(uglify())
     // 3. 另存压缩后的文件
@@ -62,7 +63,7 @@ gulp.task('script', function() {
 // 在命令行输入 gulp images 启动此任务
 gulp.task('images', function () {
     // 1. 找到图片
-    gulp.src('phicomm/images/**/*.*')
+    gulp.src('src/images/**/*.*')
     // 2. 压缩图片 - 感觉没什么用
         // .pipe(imagemin({
         //     progressive: true
@@ -79,10 +80,10 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 // 这个地方有点奇怪哈，按理说应该不用加setTimeout的
-gulp.task('default', ['clean'], function () {
-    setTimeout(function() {
+gulp.task('default', function () {
+    // setTimeout(function() {
         gulp.start('build');
-    },100);
+    // },100);
 });
 
 
