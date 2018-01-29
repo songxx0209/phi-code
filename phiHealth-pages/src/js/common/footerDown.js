@@ -19,7 +19,7 @@
     if(isWeiXin()){
         document.getElementsByClassName("headertop")[0].style.display='block'
     }else{
-        if(searchobj.Shareflag.toString() === "1"){
+        if(searchobj.Shareflag && searchobj.Shareflag.toString() === "1"){
                 document.getElementsByClassName("footersticky")[0].style.display='flex'
         }
     }
