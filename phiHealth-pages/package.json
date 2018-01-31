@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "gulp --env https://test.phicomm.com:3442/blood-pressure-meter/health/discovery/recommend",
-    "prod": "gulp --env https://device.phicomm.com:3443/blood-pressure-meter/health/discovery/recommend",
+    "test": "gulp --env https://test.phicomm.com:3442",
+    "prod": "gulp --env https://device.phicomm.com:3443",
     "gulp": "gulp"
   },
   "author": "",

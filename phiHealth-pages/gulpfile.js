@@ -21,18 +21,17 @@ var knownOptions = {
 var options = minimist(process.argv.slice(2), knownOptions);
 
 // 编译后文件的输出地址
-var output = 'test/';
+var output = 'Test/';
 if (options.env.indexOf('test') === -1) {
-    output = 'prod/';
+    output = 'Prod/';
 }
-console.log('ss', output);
 
 gulp.task('html' , function(){
     gulp.src(['src/templates/*.html', '!src/templates/base.html'])
         .pipe(nunjucks.compile({
             env: options.env
         }))
-        .pipe(htmlminify())
+        // .pipe(htmlminify())
         .pipe(gulp.dest(output))
 });
 
@@ -42,7 +41,7 @@ gulp.task('css', function () {
     // 1. 找到文件
     gulp.src('src/css/*.css')
     // 2. 压缩文件
-    	.pipe(minifyCSS())
+    	// .pipe(minifyCSS())
     // 3. 另存为压缩文件
     	.pipe(gulp.dest(output + 'css'))
 })
@@ -54,7 +53,7 @@ gulp.task('script', function() {
     // 1. 找到文件
     gulp.src(['src/js/*.js', 'src/js/**/*.js'])
     // 2. 压缩文件
-    	.pipe(uglify())
+    	// .pipe(uglify())
     // 3. 另存压缩后的文件
     	.pipe(gulp.dest(output + 'js'))
 })

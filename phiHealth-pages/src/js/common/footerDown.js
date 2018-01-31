@@ -8,25 +8,25 @@
     for(var i=0;i<arrsign.length;i++){
         searchobj[arrsign[i].split("=")[0]]=encodeURI(arrsign[i].split("=")[1]);
     }
-    function isWeiXin() {
+    function isWeiXin(){
         var ua = window.navigator.userAgent.toLowerCase();
-        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
             return true;
-        } else{
+        }else{
             return false;
         }
     }
-    if(isWeiXin()){
-        document.getElementsByClassName("headertop")[0].style.display='block'
-    }else{
-        if(searchobj.Shareflag && searchobj.Shareflag.toString() === "1"){
-                document.getElementsByClassName("footersticky")[0].style.display='flex'
-        }
+    if(searchobj.Shareflag && searchobj.Shareflag.toString() == "1"){
+        document.getElementsByClassName("footersticky")[0].style.visibility='visible';
     }
     document.getElementsByClassName("callbackthis")[0].addEventListener("click", function() {
-        window.location.href = "scheme://phicomm.phicare/awaken/html/scheme?type=discovery+"+disparam.type+"+&resourceId="+searchobj.resourceId;
-        window.setTimeout(function() {
-            window.location.href = "https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW"
-        }, 2E3)
+        if(isWeiXin()){
+            document.getElementsByClassName("headertop")[0].style.display='block'
+        }else{
+            window.location.href = "scheme://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+searchobj.resourceId;
+            window.setTimeout(function() {
+                window.location.href = "https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW"
+            }, 2E3)
+        }
     }, !1);
 })();

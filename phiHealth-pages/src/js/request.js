@@ -13,27 +13,59 @@
     var param = { resId: resId, type: 'essay' };
     var params = JSON.stringify(param);
 
-    _ajax('post', apiUrl, params, 'application/json', function(res) {
+    _ajax('post', apiUrl + '/blood-pressure-meter/health/discovery/recommend', params, 'application/json', function(res) {
         if (res.success && JSON.parse(res.data).status === 0) {
             var data = JSON.parse(res.data).data;
             var newEle = '';
+            var nextArticleUrl = '';
             
             for(var i = 0; i < data.length; i++) {
-                newEle += '<a class="rcmd-item" href="' + data[i].url + '"><div class="rcmd-pic"> <img src="' + data[i].coverUrl + '"></div> <div class="introduce"><h3>' + data[i].title + '</h3><p>#' + data[i].tags + '</p></div></a>';
+                nextArticleUrl = apiUrl + '/blood-pressure-meter/health/discovery/content/redirect?resourceId=' + data[i].id + '&appId=' + urlParams.appId + '&platform=' + urlParams.platform + '&userId=' + urlParams.userId + '&title=' + data[i].title + '&tags=' + data[i].tags;
+
+                newEle += '<a class="rcmd-item" href="' + nextArticleUrl + '"><div class="rcmd-pic"> <img src="' + data[i].coverUrl + '"></div> <div class="introduce"><h3>' + data[i].title + '</h3><p>#' + data[i].tags + '</p></div></a>';
             }
             rcmdContainer.innerHTML = newEle;
         }
     });
 
+
+    //由前面获得发现的type
+    var disparam = JSON.stringify(param);
+
+    if(urlParams.Shareflag && urlParams.Shareflag.toString() == "1"){
+        document.getElementsByClassName("footersticky")[0].style.visibility='visible';
+    }
+    document.getElementsByClassName("callbackthis")[0].addEventListener("click", function() {
+        if(isWeiXin()){
+            document.getElementsByClassName("headertop")[0].style.display='block'
+        }else{
+            window.location.href = "phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
+            window.setTimeout(function() {
+                window.location.href = "https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW"
+            }, 2E3)
+        }
+    }, !1);
+
+
+
+    // 判断是否是微信浏览器
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    }
     //获取Url中的所有参数
     function _GetUrlParams() {
-        var url = location.search; //获取url中"?"和‘？’符后的字串
-        var theRequest = {};
+        var url = window.location.search; //获取url中"?"和‘？’符后的字串
+        var theRequest =new Object({});
         if (url.indexOf("?") != -1) {
-            var str = url.substr(1);//获取？后面的子串
-            strs = str.split("&");//以&分割成数组
+            var str = url.substr(1); //获取？后面的子串
+            strs = str.split("&"); //以&分割成数组
             for (var i = 0; i < strs.length; i++) {
-                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                theRequest[strs[i].split("=")[0]] = encodeURI(strs[i].split("=")[1]);
             }
         }
         return theRequest;
