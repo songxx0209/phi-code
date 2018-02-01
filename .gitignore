@@ -2,8 +2,8 @@
 
 package-lock.json
 phiHealth-pages/node_modules
-phiHealth-pages/prod
-phiHealth-pages/test
+phiHealth-pages/phi-Prod
+phiHealth-pages/phi-Test
 phiHealth-pages/package-lock.json
 
 # Logs

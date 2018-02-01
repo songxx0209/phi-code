@@ -57,8 +57,8 @@ body {
     color: #333;
 }
 .rcmd-item {
-    margin: 0rem .4rem;
-    padding: .3rem 0;
+    margin: 0 0 0 .4rem;
+    padding: .4rem 0;
     border-bottom: 1px solid #eee;
     display: -webkit-flex;  /* 新版本语法: Chrome 21+ */
     display: flex;          /* 新版本语法: Opera 12.1, Firefox 22+ */
@@ -83,6 +83,8 @@ body {
     width:  3.6rem;
     height: 2.4rem;
     overflow: hidden;
+    background: url(data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAC0BAMAAACXud8xAAAAFVBMVEXj4+Pw8PDm5ubu7u7s7Ozr6+vo6OjgLq8oAAADJklEQVR42u3awW6bQBgE4MkCPne82GeMm3shac+maXvGSd0zOGre/xH6L15DSdpbWZD6f1KiXWSJ0c6CE2MopZRSSimllFJKKaWUUkopNWKeivszBuY77SOCMxVFjV43LxFaS8dm8PbsNAhrRWdYAOPnW4S144XFRUQvQ1AFvRqdI70PCMnwav1mHlLMKzvU0kkRUsRe7WvxLEK64agIwwFC2rFn/fLMcsHccFTMca71iDhoRrVYhBSzl45TpQhpNdqnLX+fBlW8rmWe++lwwVhf0kzvL8lfatkgqKGYes5axG4RtQDxMmq5FlPLYMZaRLuIWoD4D7WkCM8Ui6gFaN/W0mAGcVfLbt5ahCEP41pKzKJlhmT2WoA4XUItgNkCFQdrzKSGWUAtTsKBxXziJdQiIg5qzCdaRi2Il1ELkmXUArOMWoBiEbUAu0XUAiTLqAWoZnzLf7sgKWb33sXIMD/z82UJMZRSSimlJmJg8jzPumEG7zJ3h4M5rmOKT264xUXCA4An0tYIhZuYTgkwxUXkcuwpbIZAmJqHuzvSjnI0MEXQT3D9yVcFGxmuTqcfmczOLos9m2duhv1iJNy5m+UQk+TAjgcZxv5flrMc6JaioP+KTClHUhxdYU/dbpooR8QPMkwoDojZoGIGoJURjhQNWpu4nmKKw1Q54i4HTqeK626fFhbCvGQw5NeK73C0N/x6kICPt9xMux4AEqYuhxlOFbOE4drlKOFGrrQMU+4PiMJecmz7HPcZUGwlR+TvLfKrniaHKdj4YdXn6Jk8q1wOc7mm8/yWh3+fw3z/8qWgxascwxZ4JtfdekDcMJ/kvsL01f306HOk13265x9yvJsox8dsyDFcL5KhRmUfc/yWI8vFBPtUbqIvZ+BVjiMbN2HWXSBDjqg7PkUOOG9y7NzpV7Qwbi/kfY7ETWPWoXLE0tXPQsIY91P6HP5VFYOtB6r+ubY9VeshR0tbcIt/rdiMhj5H7QoQn/wD7kO1RWvhrIpJHg09l7jaf4Z4X2J1lwG4fbj7BiF/nzxiL035V64e7hsopZRSSimllFJKKaWUUkqp/9svTzuLiyNBDBAAAAAASUVORK5CYII=) no-repeat;
+    background-size: 100% 100%;
     border-radius: .13rem;
     -moz-border-radius: .13rem;
 }
@@ -113,105 +115,41 @@ body {
     padding: .5rem 0;
 }
 
-/* 底部分享 - 浮动区域 */
-.footersticky{
-    width: 100%;
-    padding: 0 .4rem;
-    box-sizing: border-box;
-    height: 1.20rem;
-    background-color: #ffffff;
-
-    display: -webkit-flex;  /* 新版本语法: Chrome 21+ */
-    display: flex;          /* 新版本语法: Opera 12.1, Firefox 22+ */
-    display: -webkit-box;   /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
-    display: -moz-box;      /* 老版本语法: Firefox (buggy) */
-    display: -ms-flexbox;   /* 混合版本语法: IE 10 */
-
-    position: fixed;
-    bottom: 0;
-    
-    -webkit-align-items:center;
-    align-items: center;
-    -webkit-box-align:center;
-    -moz-box-align:center;
-    box-align:center;
-}
-.setimg{
-    width: .80rem;
-    height: .80rem;
-}
-.showimg{
-    width: .80rem;
-    height: .80rem;
-}
-.showdetail{
-    -webkit-flex: 1;        /* Chrome */
-    -ms-flex: 1;             /* IE 10 */
-    flex: 1;                /* NEW, Spec - Opera 12.1, Firefox 20+ */
-    -webkit-box-flex: 1;     /* OLD - iOS 6-, Safari 3.1-6 */
-    -moz-box-flex: 1;       /* OLD - Firefox 19- */
-    margin-left: .21rem;
-}
-.callbackthis{
-    width: 1.50rem;
-    height: .6rem;
-    border-radius: .1rem;
-    background-color: #18cbfd;
-    color: #ffffff;
-    font-size: .28rem;
-    line-height:.6rem ;
-    text-align: center;
-}
-.layer {
-    font-size: .32rem;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000000;
-}
-.healthdetail{
-    font-size: .20rem;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #999999;
-}
-
 /* 微信分享 - 展示区 */
 .headertop{
     width: 100%;
-    height: 1.80rem;
-    background-color: #333333;
-    display: none;
+    height: 100%;
+    background-color: #000;
+    visibility: hidden;
+    position: fixed;
+    opacity: .7;
+    top: 0;
+    z-index: 100;
 }
 .headercontent{
-    width: 5.08rem;
+    width: 6.88rem;
     height: .75rem;
-    font-size: .30rem;
+    font-size: .40rem;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.5;
     text-align: left;
     color: #ffffff;
     float: left;
-    margin-left: 2.6rem;
+    margin-left: 1.2rem;
     margin-top: 0.54rem;
 }
 .sportsimg{
     width: 1.0rem;
     height: 1.0rem;
-    margin-left: .8rem;
+    margin-left: .4rem;
     margin-top: .3rem;
 }
 .footersticky{
     width: 100%;
-    padding: 0 .4rem;
+    padding: 0 .53rem;
     box-sizing: border-box;
-    height: 1.20rem;
+    height: 1.60rem;
     background-color: #ffffff;
     display: -webkit-flex;  /* 新版本语法: Chrome 21+ */
     display: flex;          /* 新版本语法: Opera 12.1, Firefox 22+ */
@@ -228,12 +166,12 @@ body {
     visibility: hidden;
 }
 .setimg{
-    width: .80rem;
-    height: .80rem;
+    width: 1.06rem;
+    height: 1.06rem;
 }
 .showimg{
-    width: .80rem;
-    height: .80rem;
+    width: 100%;
+    height: 100%;
 }
 .showdetail{
     -webkit-flex: 1;        /* Chrome */
@@ -243,18 +181,8 @@ body {
     -moz-box-flex: 1;       /* OLD - Firefox 19- */
     margin-left: .21rem;
 }
-.callbackthis{
-    width: 1.50rem;
-    height: .6rem;
-    border-radius: .1rem;
-    background-color: #18cbfd;
-    color: #ffffff;
-    font-size: .28rem;
-    line-height:.6rem ;
-    text-align: center;
-}
 .layer {
-    font-size: .32rem;
+    font-size: .43rem;
     font-weight: 500;
     font-style: normal;
     font-stretch: normal;
@@ -263,11 +191,21 @@ body {
     color: #000000;
 }
 .healthdetail{
-    font-size: .20rem;
+    font-size: .26rem;
     font-weight: 500;
     font-style: normal;
     font-stretch: normal;
     letter-spacing: normal;
     text-align: left;
     color: #999999;
+}
+.callbackthis{
+    width: 2.0rem;
+    height: .8rem;
+    border-radius: .1rem;
+    background-color: #18cbfd;
+    color: #ffffff;
+    font-size: .37rem;
+    line-height: .8rem;
+    text-align: center;
 }

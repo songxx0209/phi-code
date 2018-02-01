@@ -21,9 +21,9 @@ var knownOptions = {
 var options = minimist(process.argv.slice(2), knownOptions);
 
 // 编译后文件的输出地址
-var output = 'Test/';
+var output = 'phi-Test/';
 if (options.env.indexOf('test') === -1) {
-    output = 'Prod/';
+    output = 'phi-Prod/';
 }
 
 gulp.task('html' , function(){

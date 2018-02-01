@@ -20,7 +20,7 @@
             var nextArticleUrl = '';
             
             for(var i = 0; i < data.length; i++) {
-                nextArticleUrl = apiUrl + '/blood-pressure-meter/health/discovery/content/redirect?resourceId=' + data[i].id + '&appId=' + urlParams.appId + '&platform=' + urlParams.platform + '&userId=' + urlParams.userId + '&title=' + data[i].title + '&tags=' + data[i].tags;
+                nextArticleUrl = apiUrl + '/blood-pressure-meter/health/discovery/content/redirect?resourceId=' + data[i].id + '&appId=' + urlParams.appId + '&platform=' + urlParams.platform + '&userId=' + urlParams.userId + '&Shareflag=' + urlParams.Shareflag;
 
                 newEle += '<a class="rcmd-item" href="' + nextArticleUrl + '"><div class="rcmd-pic"> <img src="' + data[i].coverUrl + '"></div> <div class="introduce"><h3>' + data[i].title + '</h3><p>#' + data[i].tags + '</p></div></a>';
             }
@@ -28,25 +28,41 @@
         }
     });
 
-
     //由前面获得发现的type
     var disparam = JSON.stringify(param);
 
     if(urlParams.Shareflag && urlParams.Shareflag.toString() == "1"){
+        window.location.href ="phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
         document.getElementsByClassName("footersticky")[0].style.visibility='visible';
+        if(isWeiXin()){
+            document.getElementsByClassName("headertop")[0].addEventListener("click", function() {
+                    document.getElementsByClassName("headertop")[0].style.visibility='hidden'
+            }, !1);
+        }
     }
     document.getElementsByClassName("callbackthis")[0].addEventListener("click", function() {
         if(isWeiXin()){
-            document.getElementsByClassName("headertop")[0].style.display='block'
+            document.getElementsByClassName("headertop")[0].style.visibility='visible'
         }else{
-            window.location.href = "phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
-            window.setTimeout(function() {
-                window.location.href = "https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW"
-            }, 2E3)
+            testApp()
         }
     }, !1);
-
-
+    function testApp() {
+        var timeout, t = 1000, hasApp = true;
+        setTimeout(function () {
+            if (!hasApp) {
+                window.location.href = "https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW";
+            }
+        }, 2000);
+        var t1 = Date.now();
+        window.location.href ="phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
+        timeout = setTimeout(function () {
+            var t2 = Date.now();
+            if (!t1 || t2 - t1 < t + 100) {
+                hasApp = false;
+            }
+        }, t);
+    }
 
     // 判断是否是微信浏览器
     function isWeiXin(){
