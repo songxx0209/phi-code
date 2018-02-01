@@ -4,6 +4,18 @@
     var observer = lozad();
     observer.observe();
 
+    // 图片加载完成再显示
+    var content = document.getElementById('content');
+    var imgEle = content.getElementsByTagName('img');
+    
+    for (var i = 0; i < imgEle.length; i ++) {
+        (function (i) {
+            imgEle[i].onload = function () {
+                imgEle[i].style.visibility = 'inherit';
+            }
+        })(i);
+    }
+
     // 请求推荐文章列表
     var apiUrl = document.getElementsByTagName('body')[0].getAttribute('data');
     var rcmdContainer = document.getElementById('rcmdContainer');
@@ -22,11 +34,20 @@
             for(var i = 0; i < data.length; i++) {
                 nextArticleUrl = apiUrl + '/blood-pressure-meter/health/discovery/content/redirect?resourceId=' + data[i].id + '&appId=' + urlParams.appId + '&platform=' + urlParams.platform + '&userId=' + urlParams.userId + '&Shareflag=' + urlParams.Shareflag;
 
-                newEle += '<a class="rcmd-item" href="' + nextArticleUrl + '"><div class="rcmd-pic"> <img src="' + data[i].coverUrl + '"></div> <div class="introduce"><h3>' + data[i].title + '</h3><p>#' + data[i].tags + '</p></div></a>';
+                newEle += '<a class="rcmd-item" onclick="postParamsToAndroid(' + data[i].id + ',\'' + data[i].title + '\', \'' + data[i].tags + '\')" href="' + nextArticleUrl + '"><div class="rcmd-pic"><img src="' + data[i].coverUrl + '"></div> <div class="introduce"><h3>' + data[i].title + '</h3><p>#' + data[i].tags + '</p></div></a>';
             }
             rcmdContainer.innerHTML = newEle;
         }
     });
+    // 传递参数到android
+    window.postParamsToAndroid = function (resId, title, tags) {
+        var params = JSON.stringify({
+            resourceId: resId,
+            title: title,
+            tags: tags
+        });
+        ArticleAndroid.setArticleParam(params);
+    }
 
     //由前面获得发现的type
     var disparam = JSON.stringify(param);

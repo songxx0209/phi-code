@@ -34,10 +34,21 @@ body {
     line-height: .64rem;
     margin: .533rem 0;
 }
-.article .content > img {
+
+.loadImg {
     width: 100%;
+    height: 6.2rem;
     margin: .266rem 0;
+    background: url(data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAC0BAMAAACXud8xAAAAFVBMVEXj4+Pw8PDm5ubu7u7s7Ozr6+vo6OjgLq8oAAADJklEQVR42u3awW6bQBgE4MkCPne82GeMm3shac+maXvGSd0zOGre/xH6L15DSdpbWZD6f1KiXWSJ0c6CE2MopZRSSimllFJKKaWUUkopNWKeivszBuY77SOCMxVFjV43LxFaS8dm8PbsNAhrRWdYAOPnW4S144XFRUQvQ1AFvRqdI70PCMnwav1mHlLMKzvU0kkRUsRe7WvxLEK64agIwwFC2rFn/fLMcsHccFTMca71iDhoRrVYhBSzl45TpQhpNdqnLX+fBlW8rmWe++lwwVhf0kzvL8lfatkgqKGYes5axG4RtQDxMmq5FlPLYMZaRLuIWoD4D7WkCM8Ui6gFaN/W0mAGcVfLbt5ahCEP41pKzKJlhmT2WoA4XUItgNkCFQdrzKSGWUAtTsKBxXziJdQiIg5qzCdaRi2Il1ELkmXUArOMWoBiEbUAu0XUAiTLqAWoZnzLf7sgKWb33sXIMD/z82UJMZRSSimlJmJg8jzPumEG7zJ3h4M5rmOKT264xUXCA4An0tYIhZuYTgkwxUXkcuwpbIZAmJqHuzvSjnI0MEXQT3D9yVcFGxmuTqcfmczOLos9m2duhv1iJNy5m+UQk+TAjgcZxv5flrMc6JaioP+KTClHUhxdYU/dbpooR8QPMkwoDojZoGIGoJURjhQNWpu4nmKKw1Q54i4HTqeK626fFhbCvGQw5NeK73C0N/x6kICPt9xMux4AEqYuhxlOFbOE4drlKOFGrrQMU+4PiMJecmz7HPcZUGwlR+TvLfKrniaHKdj4YdXn6Jk8q1wOc7mm8/yWh3+fw3z/8qWgxascwxZ4JtfdekDcMJ/kvsL01f306HOk13265x9yvJsox8dsyDFcL5KhRmUfc/yWI8vFBPtUbqIvZ+BVjiMbN2HWXSBDjqg7PkUOOG9y7NzpV7Qwbi/kfY7ETWPWoXLE0tXPQsIY91P6HP5VFYOtB6r+ubY9VeshR0tbcIt/rdiMhj5H7QoQn/wD7kO1RWvhrIpJHg09l7jaf4Z4X2J1lwG4fbj7BiF/nzxiL035V64e7hsopZRSSimllFJKKaWUUkqp/9svTzuLiyNBDBAAAAAASUVORK5CYII=) no-repeat;
+    background-size: 100% 100%;
 }
+
+.loadImg img {
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
 .article .content > p.main_title {
     font-weight: 400;
     font-family: PingFangSC-Semibold, sans-serif;
@@ -109,10 +120,11 @@ body {
 }
 
 .footer {
+    height: 1.6rem;
+    line-height: 1.6rem;
     font-size: .4rem;
     color: #999;
     text-align: center;
-    padding: .5rem 0;
 }
 
 /* 微信分享 - 展示区 */
@@ -148,6 +160,7 @@ body {
 .footersticky{
     width: 100%;
     padding: 0 .53rem;
+    border-top: 1px solid #eee;
     box-sizing: border-box;
     height: 1.60rem;
     background-color: #ffffff;
