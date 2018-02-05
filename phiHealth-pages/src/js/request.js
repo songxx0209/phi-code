@@ -32,22 +32,13 @@
             var nextArticleUrl = '';
             
             for(var i = 0; i < data.length; i++) {
-                nextArticleUrl = apiUrl + '/blood-pressure-meter/health/discovery/content/redirect?resourceId=' + data[i].id + '&appId=' + urlParams.appId + '&platform=' + urlParams.platform + '&userId=' + urlParams.userId + '&Shareflag=' + urlParams.Shareflag;
+                nextArticleUrl = apiUrl + '/blood-pressure-meter/health/discovery/content/redirect?resourceId=' + data[i].id + '&appId=' + urlParams.appId + '&platform=' + urlParams.platform + '&userId=' + urlParams.userId + '&Shareflag=' + urlParams.Shareflag + '&title=' + data[i].title + '&tags=' + data[i].tags;
 
-                newEle += '<a class="rcmd-item" onclick="postParamsToAndroid(' + data[i].id + ',\'' + data[i].title + '\', \'' + data[i].tags + '\')" href="' + nextArticleUrl + '"><div class="rcmd-pic"><img src="' + data[i].coverUrl + '"></div> <div class="introduce"><h3>' + data[i].title + '</h3><p>#' + data[i].tags + '</p></div></a>';
+                newEle += '<a class="rcmd-item" href="' + nextArticleUrl + '"><div class="rcmd-pic"> <img src="' + data[i].coverUrl + '"></div> <div class="introduce"><h3>' + data[i].title + '</h3><p>#' + data[i].tags + '</p></div></a>';
             }
             rcmdContainer.innerHTML = newEle;
         }
     });
-    // 传递参数到android
-    window.postParamsToAndroid = function (resId, title, tags) {
-        var params = JSON.stringify({
-            resourceId: resId,
-            title: title,
-            tags: tags
-        });
-        ArticleAndroid.setArticleParam(params);
-    }
 
     //由前面获得发现的type
     var disparam = JSON.stringify(param);
