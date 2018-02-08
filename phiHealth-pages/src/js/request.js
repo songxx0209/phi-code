@@ -16,7 +16,7 @@
     for (var i = 0; i < imgEle.length; i ++) {
         (function (i) {
             imgEle[i].onload = function () {
-                imgEle[i].style.visibility = 'visible';
+                imgEle[i].style.visibility = 'inherit';
             }
         })(i);
     }
@@ -41,15 +41,20 @@
 
                 newEle += '<a class="rcmd-item" href="' + nextArticleUrl + '"><div class="rcmd-pic"> <img src="' + data[i].coverUrl + '" alt="..."></div> <div class="introduce"><h3>' + data[i].title + '</h3><p>#' + data[i].tags + '</p></div></a>';
             }
-            rcmdContainer.innerHTML = newEle; // 只会进行一次reflow
+            rcmdContainer.innerHTML = newEle;
         }
     });
+
 
     //由前面获得发现的type
     var disparam = JSON.stringify(param);
 
-    if(urlParams.Shareflag && urlParams.Shareflag.toString() == "1"){
-        window.location.href ="phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
+    if(urlParams.Shareflag && urlParams.Shareflag.toString() === "1"){
+       // createa("phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId);
+       // window.location.href = "https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW";
+        setTimeout(function () {
+            window.location.href ="phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
+        },0);
         document.getElementsByClassName("footersticky")[0].style.visibility='visible';
         if(isWeiXin()){
             document.getElementsByClassName("headertop")[0].addEventListener("click", function() {
@@ -68,10 +73,13 @@
         var timeout, t = 1000, hasApp = true;
         setTimeout(function () {
             if (!hasApp) {
+                //createa("https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW");
                 window.location.href = "https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW";
             }
         }, 2000);
         var t1 = Date.now();
+        //createa("phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId);
+
         window.location.href ="phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
         timeout = setTimeout(function () {
             var t2 = Date.now();
@@ -80,7 +88,15 @@
             }
         }, t);
     }
-
+    function createa(ahref) {
+        setTimeout(function() {  // 必须要使用settimeout
+            var a = document.createElement("a"); //创建a元素
+            a.setAttribute("href",ahref); a.style.display = "none"; document.body.appendChild(a);
+            var t = document.createEvent("HTMLEvents"); // 返回新创建的 Event 对象，具有指定的类型。
+            t.initEvent("click", !1, !1) // 初始化新事件对象的属性
+            a.dispatchEvent(t)  // 绑定事件
+        }, 0)
+    }
     // 判断是否是微信浏览器
     function isWeiXin(){
         var ua = window.navigator.userAgent.toLowerCase();
@@ -93,7 +109,7 @@
     //获取Url中的所有参数
     function _GetUrlParams() {
         var url = window.location.search; //获取url中"?"和‘？’符后的字串
-        var theRequest = new Object({});
+        var theRequest =new Object({});
         if (url.indexOf("?") != -1) {
             var str = url.substr(1); //获取？后面的子串
             strs = str.split("&"); //以&分割成数组

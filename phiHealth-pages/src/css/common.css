@@ -125,11 +125,10 @@ h1 {
 }
 
 .footer {
-    height: 1.6rem;
-    line-height: 1.6rem;
     font-size: .4rem;
     color: #999;
     text-align: center;
+    padding: .5rem 0;
 }
 
 /* 微信分享 - 展示区 */
