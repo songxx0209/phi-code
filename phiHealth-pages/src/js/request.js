@@ -1,5 +1,10 @@
 
 (function() {
+    // 浏览器打开情况的适配
+    var head = document.getElementsByTagName('head')[0];
+    if(!/Android|webOS|iPhone|iPod|BlackBerry|Mobile/i.test(navigator.userAgent)) {
+        document.documentElement.style = 'font-size: 75px; width: 750px; margin: 0 auto;';
+    }
     // 执行图片懒加载脚本
     var observer = lozad();
     observer.observe();
@@ -11,7 +16,7 @@
     for (var i = 0; i < imgEle.length; i ++) {
         (function (i) {
             imgEle[i].onload = function () {
-                imgEle[i].style.visibility = 'inherit';
+                imgEle[i].style.visibility = 'visible';
             }
         })(i);
     }
@@ -34,9 +39,9 @@
             for(var i = 0; i < data.length; i++) {
                 nextArticleUrl = apiUrl + '/blood-pressure-meter/health/discovery/content/redirect?resourceId=' + data[i].id + '&appId=' + urlParams.appId + '&platform=' + urlParams.platform + '&userId=' + urlParams.userId + '&Shareflag=' + urlParams.Shareflag + '&title=' + data[i].title + '&tags=' + data[i].tags;
 
-                newEle += '<a class="rcmd-item" href="' + nextArticleUrl + '"><div class="rcmd-pic"> <img src="' + data[i].coverUrl + '"></div> <div class="introduce"><h3>' + data[i].title + '</h3><p>#' + data[i].tags + '</p></div></a>';
+                newEle += '<a class="rcmd-item" href="' + nextArticleUrl + '"><div class="rcmd-pic"> <img src="' + data[i].coverUrl + '" alt="..."></div> <div class="introduce"><h3>' + data[i].title + '</h3><p>#' + data[i].tags + '</p></div></a>';
             }
-            rcmdContainer.innerHTML = newEle;
+            rcmdContainer.innerHTML = newEle; // 只会进行一次reflow
         }
     });
 
@@ -88,7 +93,7 @@
     //获取Url中的所有参数
     function _GetUrlParams() {
         var url = window.location.search; //获取url中"?"和‘？’符后的字串
-        var theRequest =new Object({});
+        var theRequest = new Object({});
         if (url.indexOf("?") != -1) {
             var str = url.substr(1); //获取？后面的子串
             strs = str.split("&"); //以&分割成数组
