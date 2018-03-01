@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>tab</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+  <link rel="stylesheet" href="./tab.css">
+  <style type="text/css">
+    .tab_con {
+      height: 500px;
+      width: 100%;
+      overflow: hidden;
+    }
+    .tab_box {
+      overflow: hidden;
+      position: relative;
+      -webkit-transition: all .1s ease-in-out;
+      -moz-transition: all .1s ease-in-out;
+      -o-transition: all .1s ease-in-out;
+      transition: all .1s ease-in-out;
+    }
+    .tab_list {
+      float: left;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div>一般情况tab宽度基本一致</div>
+  <div class="h5-plugin-tab" id="J_Tabs2">
+    <div class="h5-plugin-tab-in J_In">
+      <ul>
+        <li>
+          <a>9.9元包邮疯抢</a>
+        </li>
+        <li >
+          <a>热卖</a>
+        </li>
+        
+        <li >
+          <a>洗护清洁</a>
+        </li>
+        <li >
+          <a>食品</a>
+        </li>
+        <li >
+          <a>进口食品232323</a>
+        </li>
+        <li >
+          <a>母婴用品</a>
+        </li>
+        <li >
+          <a>内衣配饰ffffffffffff</a>
+        </li>
+        <li >
+          <a>居家日用</a>
+        </li>
+      </ul>
+      <div class="h5-plugin-tab-silder J_Slider"></div>
+    </div>
+  </div>
+  <div class="tab_con" id="content">
+    <div class="tab_box">
+        <div class="tab_list">
+            影名称电影名称电影名称电影名称电影名称</p>
+        </div>
+        <div class="tab_list">
+            2
+        </div>
+        <div class="tab_list">
+            3
+        </div>
+        <div class="tab_list">
+            4
+        </div>
+        <div class="tab_list">
+           5
+        </div>
+        <div class="tab_list">
+            6
+        </div>
+        <div class="tab_list">
+            7
+        </div>
+        <div class="tab_list">
+            8
+        </div>
+    </div>
+  </div>
+
+  
+  <script type="text/javascript" src="./zepto.js"></script>
+  <script type="text/javascript" src="./tab.js"></script>
+  <script type="text/javascript">
+
+    var current = 0;
+    var prev = 0;
+
+    var tar = 0; // 记录手指按下时的接触点位置
+    var endX = 0;
+    var dist = 0; // 手指滑动的距离
+
+
+    var windowWidth = document.body.clientWidth; //window 宽度;
+    var tabBox = $('.tab_box');
+    var tab = new MulitpeTab($('#J_Tabs2'), {
+      // tab之间的间距
+      gap:20
+    });
+    tab.go(0);
+
+    tab.addEventListener("onChange", function(index, prevIndex, $element){
+      //当前选中的序号，上一次的序号，当前选中的元素
+      console.log(arguments, windowWidth*index);
+
+      current = index;
+      prev = prevIndex;
+      tabBox.css({ '-webkit-transform': 'translate(-' + windowWidth*index + 'px, 0)', '-moz-transform': 'translate(-' + windowWidth*index + 'px, 0)', '-o-transform': 'translate(-' + windowWidth*index + 'px, 0)', '-ms-transform': 'translate(-' + windowWidth*index + 'px, 0)', 'transform': 'translate(-' + windowWidth*index + 'px, 0)' });
+    });
+
+    $('.tab_list').each(function() {
+      // console.log($(this));
+      $(this).css({ 'width': windowWidth });
+    })
+    tabBox.css({ 'width': $('.tab_list').length*windowWidth });
+
+    tabBox.on('touchstart',chstart);
+    tabBox.on('touchmove',chmove);
+    tabBox.on('touchend',chend);
+
+
+    //按下
+    function chstart(ev){
+        ev.preventDefault;
+        var touch = ev.touches[0];
+        tar=touch.pageX;
+        // console.log(tar);
+        // tabBox.css({ '-webkit-transform': 'all 0s ease-in', '-moz-transform': 'all 0s ease-in', '-o-transform': 'all 0s ease-in', '-ms-transform': 'all 0s ease-in', 'transform': 'all 0s ease-in' });
+    }
+    //滑动
+    function chmove(ev){
+        // var stars = wrap.querySelector('.active').start;
+        ev.preventDefault;
+        var touch = ev.touches[0];
+        var distance = touch.pageX-tar;
+        dist = distance;
+        console.log(distance, endX);
+
+        tabBox.css({ '-webkit-transform': 'translate(' + (distance + endX) + 'px, 0)', '-moz-transform': 'translate(' + (distance + endX) + 'px, 0)', '-o-transform': 'translate(' + (distance + endX) + 'px, 0)', '-ms-transform': 'translate(' + (distance + endX) + 'px, 0)', 'transform': 'translate(' + (distance + endX) + 'px, 0)' });
+
+    }
+
+    //离开
+    function chend(ev){
+
+      // var str= tabBox.css('transform');
+      //   var strs = str.split(",",1);
+      //   // console.log('ss=', strs);
+      //   endX = Number(strs[0].slice(10,-2));
+
+        // if (dist < -1/3*windowWidth) {
+        //   current++;
+        //   prev++;
+        //   tabBox.css({ '-webkit-transform': 'translate(-' + windowWidth*current + 'px, 0)', '-moz-transform': 'translate(-' + windowWidth*current + 'px, 0)', '-o-transform': 'translate(-' + windowWidth*current + 'px, 0)', '-ms-transform': 'translate(-' + windowWidth*current + 'px, 0)', 'transform': 'translate(-' + windowWidth*current + 'px, 0)' });
+
+        //   tab.go(current);
+        // } else if (dist > 1/3*windowWidth) {
+        //   current--;
+        //   prev--;
+        //   tabBox.css({ '-webkit-transform': 'translate(-' + windowWidth*current + 'px, 0)', '-moz-transform': 'translate(-' + windowWidth*current + 'px, 0)', '-o-transform': 'translate(-' + windowWidth*current + 'px, 0)', '-ms-transform': 'translate(-' + windowWidth*current + 'px, 0)', 'transform': 'translate(-' + windowWidth*current + 'px, 0)' });
+
+        //   tab.go(current);
+        // } else {
+        //   endX = -windowWidth*current;
+        //   console.log(windowWidth*current);
+        //   tabBox.css({ '-webkit-transform': 'translate(-' + windowWidth*current + 'px, 0)', '-moz-transform': 'translate(-' + windowWidth*current + 'px, 0)', '-o-transform': 'translate(-' + windowWidth*current + 'px, 0)', '-ms-transform': 'translate(-' + windowWidth*current + 'px, 0)', 'transform': 'translate(-' + windowWidth*current + 'px, 0)' });
+        // }
+        
+    }
+
+  </script>
+</body>
+</html>
