@@ -37,7 +37,7 @@ function MulitpeTab( tab , options){
 
 	this.init();
 
-};
+}
 
 
 MulitpeTab.prototype = {
