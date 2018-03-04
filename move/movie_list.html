@@ -20,92 +20,7 @@
 </div>
 <div class="tab_con" id="tab_con">
     <div class="tab_box" id="tab_box">
-        <!-- <div class="tab_list">
-            <div class="tab_list_item">
-                <img src="imgs/000002.jpeg" alt="图片">
-                <p>电影名称电影名称</p>
-                <p>简介简介简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000003.jpg" alt="图片">
-                <p>电影名称电影名称电影名称</p>
-                <p>简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000005.jpg" alt="图片">
-                <p>电影名称电影名称</p>
-                <p>简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000002.jpeg" alt="图片">
-                <p>电影名称电影名称电影名称</p>
-                <p>简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000003.jpg" alt="图片">
-                <p>电影名称电影名称电影名称称</p>
-                <p>简介简介简介简介简介介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000005.jpg" alt="图片">
-                <p>电影名称电影名称电影名称</p>
-                <p>简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000002.jpeg" alt="图片">
-                <p>电影名称电影名称电影名称</p>
-                <p>简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000003.jpg" alt="图片">
-                <p>电影名称电影名称电影名称</p>
-                <p>简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000005.jpg" alt="图片">
-                <p>电影名称电影名称电影名称</p>
-                <p>简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000002.jpeg" alt="图片">
-                <p>电影名称电影名称电影名称</p>
-                <p>简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000003.jpg" alt="图片">
-                <p>电影名称电影名称电影名称</p>
-                <p>简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000005.jpg" alt="图片">
-                <p>电影名称电影名称电影名称</p>
-                <p>简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000002.jpeg" alt="图片">
-                <p>电影名称电影名称</p>
-                <p>简介简介简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000002.jpeg" alt="图片">
-                <p>电影名称电影名称</p>
-                <p>简介简介简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000002.jpeg" alt="图片">
-                <p>电影名称电影名称</p>
-                <p>简介简介简介简介简介简介简介</p>
-            </div>
-            <div class="tab_list_item">
-                <img src="imgs/000002.jpeg" alt="图片">
-                <p>电影名称电影名称</p>
-                <p>简介简介简介简介简介简介简介</p>
-            </div>
-        </div> -->
     </div>
-    <!-- <div class="dropload-down">
-        <div class="dropload-refresh">↑上拉加载更多</div>
-    </div> -->
 </div>
 
 
@@ -124,7 +39,7 @@
     var endX = 0; // 移动后最后停留的位置
     var dist = 0; // 手指滑动的距离
 
-
+    var tab = null;
     var windowWidth = document.body.clientWidth; //window 宽度;
     var tabBox = document.getElementsByClassName('tab_box')[0];
     var tabList = null;
@@ -145,13 +60,13 @@
         success: function (data) {
 
             tabData = JSON.parse(data).data;
-            console.log(tabData);
+            // console.log(tabData);
             var titleList = '';
             var contentList = '';
             for (var i = 0; i < tabData.length; i++) {
                 tabData[i].page = 0;
                 titleList += '<li><a>' + tabData[i].name + '</a></li>';
-                contentList += '<div class="tab_list">'+i+'</div>';
+                contentList += '<div class="tab_list"><div class="ss"></div></div>';
             }
             tabTitle.innerHTML = titleList;
             tabBox.innerHTML = contentList;
@@ -174,68 +89,22 @@
             //     }
             // });
 
-            $('#tab_con').dropload({
-                scrollArea: window,
-                loadDownFn: function(me) {
-                    // tabData[current].page++;
-                    // 拼接HTML
-                    // var result = '';
-                    console.log('ss=', tabData);
-                    $.ajax({
-                        type: 'GET',
-                        url: 'https://feixunbeta.yinyuetai.com/api/feixun/get-videos?area='+tabData[current].id+'&offset='+tabData[current].page+'&item=21',
-                        dataType: 'application/json',
-                        success: function(data) {
-                            tabData[current].page++;
-                            var movieData = JSON.parse(data).data;
-                            var tabContent = '';
-                            var arrLen = movieData.length;
-                            if (arrLen > 0) {
-                                
-                                for (var i = 0; i < arrLen; i++) {
-                                    tabContent += '<div class="tab_list_item"><div><img src="'+movieData[i].thumbnail+'" alt="图片"></div><p>'+movieData[i].artist+'</p><p>'+movieData[i].name+'</p></div>';
-                                }
 
-                                // 如果没有数据
-                            } else {
-                                // 锁定
-                                me.lock();
-                                // 无数据
-                                me.noData();
-                            }
-                            // 为了测试，延迟1秒加载
-                            setTimeout(function() {
-                                // 插入数据到页面，放到最后面
-                                // $('.lists').append(result);
-                                tabList[current].innerHTML += tabContent;
-                                // 每次数据插入，必须重置
-                                me.resetload();
-                            }, 1000);
-                        },
-                        error: function(xhr, type) {
-                            alert('Ajax error!');
-                            // 即使加载出错，也得重置
-                            me.resetload();
-                        }
-                    });
-                }
-            });
 
             for (var i = 0; i < tabLength; i++) {
                 tabList[i].style.width = windowWidth + "px";
-                tabList[i].style.float = 'left';
-                tabList[i].style.float = 'left';
-                tabList[i].style.padding = '0';
-                tabList[i].style.margin = '0';
-                tabList[i].style.verticalAlign = 'top';
-                tabList[i].style.display = 'table-cell';
+                // tabList[i].style.float = 'left';
+                // tabList[i].style.padding = '0';
+                // tabList[i].style.margin = '0';
+                // tabList[i].style.verticalAlign = 'top';
+                // tabList[i].style.display = 'table-cell';
             }
 
             tabBox.style.overflow = 'hidden';
             tabBox.style.position = 'relative';
             tabBox.style.width = windowWidth * tabLength + "px";
 
-            var tab = new MulitpeTab($('#J_Tabs2'), {
+            tab = new MulitpeTab($('#J_Tabs2'), {
                 // tab之间的间距
                 gap: 20
             });
@@ -245,22 +114,58 @@
                 //当前选中的序号，上一次的序号，当前选中的元素
                 current = index;
                 tabId = tabData[current].id;
+
                 init.translate(tabBox, windowWidth, current);
+                // console.log('wowo');
                 if (tabData[current].page === 0) {
-                    // $.ajax({
-                    //     url: 'https://feixunbeta.yinyuetai.com/api/feixun/get-videos?area='+tabData[current].id+'&offset='+tabData[current].page+'&item=21',
-                    //     type: "GET",
-                    //     dataType: "application/json",
-                    //     success: function (data) {
-                    //         tabData[current].page++;
-                    //         var movieData = JSON.parse(data).data;
-                    //         var tabContent = '';
-                    //         for (var i = 0; i < movieData.length; i++) {
-                    //             tabContent += '<div class="tab_list_item"><div><img src="'+movieData[i].thumbnail+'" alt="图片"></div><p>'+movieData[i].artist+'</p><p>'+movieData[i].name+'</p></div>';
-                    //         }
-                    //         tabList[current].innerHTML = tabContent;
-                    //     }
-                    // });
+                    setTimeout(function(){
+                        $('.tab_list').eq(current).css({'height': 'auto'}).siblings().css({'height': '10px'});
+
+                        $('.tab_con').dropload({
+                            scrollArea: window,
+                            // scrollArea: $('.tab_con'), 
+                            loadDownFn: function(me) {
+                                // 拼接HTML
+                                $.ajax({
+                                    type: 'GET',    
+                                    url: 'https://feixunbeta.yinyuetai.com/api/feixun/get-videos?area='+tabData[current].id+'&offset='+tabData[current].page+'&item=21',
+                                    dataType: 'application/json',
+                                    success: function(data) {
+                                        tabData[current].page++;
+                                        var movieData = JSON.parse(data).data;
+                                        var tabContent = '';
+                                        var arrLen = movieData.length;
+                                        if (arrLen > 0) {
+                                            
+                                            for (var i = 0; i < arrLen; i++) {
+                                                tabContent += '<div class="tab_list_item"><div><img src="'+movieData[i].thumbnail+'" alt="图片"></div><p>'+movieData[i].artist+'</p><p>'+movieData[i].name+'</p></div>';
+                                            }
+
+                                            // 如果没有数据
+                                        } else {
+                                            // 锁定
+                                            me.lock();
+                                            // 无数据
+                                            me.noData();
+                                        }
+                                        // 为了测试，延迟1秒加载
+                                        setTimeout(function() {
+                                            // 插入数据到页面，放到最后面
+                                            // $('.lists').append(result);
+                                            tabList[current].innerHTML += tabContent;
+                                            // 每次数据插入，必须重置
+                                            me.resetload();
+                                        }, 1000);
+                                    },
+                                    error: function(xhr, type) {
+                                        alert('Ajax error!');
+                                        // 即使加载出错，也得重置
+                                        me.resetload();
+                                    }
+                                });
+                            }
+                        });
+                    }, 200);
                 }
                 
             });
@@ -271,59 +176,6 @@
         }
     });
 
-    $(function() {
-
-        if (current !== 0) {
-            // dropload
-            // $('#tab_con').dropload({
-            //     scrollArea: window,
-            //     loadDownFn: function(me) {
-            //         // tabData[current].page++;
-            //         // 拼接HTML
-            //         var result = '';
-            //         $.ajax({
-            //             type: 'GET',
-            //             url: 'https://feixunbeta.yinyuetai.com/api/feixun/get-videos?area='+tabData[current].id+'&offset='+tabData[current].page+'&item=21',
-            //             dataType: 'json',
-            //             success: function(data) {
-            //                 tabData[current].page++;
-            //                 var movieData = JSON.parse(data).data;
-            //                 var tabContent = '';
-            //                 var arrLen = movieData.length;
-            //                 if (arrLen > 0) {
-                                
-            //                     for (var i = 0; i < arrLen; i++) {
-            //                         tabContent += '<div class="tab_list_item"><div><img src="'+movieData[i].thumbnail+'" alt="图片"></div><p>'+movieData[i].artist+'</p><p>'+movieData[i].name+'</p></div>';
-            //                     }
-
-            //                     // 如果没有数据
-            //                 } else {
-            //                     // 锁定
-            //                     me.lock();
-            //                     // 无数据
-            //                     me.noData();
-            //                 }
-            //                 // 为了测试，延迟1秒加载
-            //                 setTimeout(function() {
-            //                     // 插入数据到页面，放到最后面
-            //                     // $('.lists').append(result);
-            //                     tabList[current].innerHTML = tabContent;
-            //                     // 每次数据插入，必须重置
-            //                     me.resetload();
-            //                 }, 1000);
-            //             },
-            //             error: function(xhr, type) {
-            //                 alert('Ajax error!');
-            //                 // 即使加载出错，也得重置
-            //                 me.resetload();
-            //             }
-            //         });
-            //     }
-            // });
-        }
-
-    });
-
 
     
 
@@ -332,6 +184,7 @@
 
     //按下
     function chstart(ev) {
+
         startX = ev.touches[0].pageX;
         startY = ev.touches[0].pageY;
 
@@ -345,6 +198,7 @@
     //滑动
     function chmove(ev) {
         // var stars = wrap.querySelector('.active').start;
+
         ev.preventDefault;
         var touch = ev.touches[0];
         var distance = touch.pageX - tar;
@@ -415,14 +269,21 @@
 
     var init = {
         translate: function (obj, windowWidth, star) {
+            endX = -star * windowWidth;
             obj.style.webkitTransform = 'translate(' + -star * windowWidth + 'px,0)';
             obj.style.transform = 'translate(' + -star * windowWidth + 'px,0)';
             obj.style.webkitTransition = 'all 0.3s ease-in-out';
             obj.style.transition = 'all 0.3s ease-in-out';
+            if (tabData[current].page !== 0) {
+                $('.tab_list').eq(current).css({'height': 'auto'}).siblings().css({'height': '20rem'});
+            }
         },
         touchs: function (obj, windowWidth, tar, distance, endX) {
             obj.style.webkitTransform = 'translate(' + (distance + endX) + 'px, 0)';
             obj.style.transform = 'translate(' + (distance + endX) + 'px, 0)';
+            if (tabData[current].page !== 0) {
+                $('.tab_list').eq(current).css({'height': 'auto'}).siblings().css({'height': '20rem'});
+            }
         },
         lineAnme: function (obj, stance) {
             obj.style.webkitTransform = 'translate(' + stance + 'px, 0)';

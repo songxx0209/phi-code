@@ -218,7 +218,7 @@ MulitpeTab.prototype = {
 		//$("#J_NavtabIn ul").css("-webkit- ","translateX("+ (xx) +"px)")
 		
 		// 18 = 300/16
-		// 按照 webkitRequestAnimationFrame 16毫秒调用一次，300毫秒的动画，保持在18步完成，较为流畅
+		// 按照 requestAnimationFrame 16毫秒调用一次，300毫秒的动画，保持在18步完成，较为流畅
 		this.scrollTo(this.tabIn[0], -xx, 18);// 18 = 300/16
 		
 		
@@ -254,7 +254,7 @@ MulitpeTab.prototype = {
 		var current = ele.scrollLeft;
 		var duration = x;
 		var t = 0;
-		var webkitRequestAnimationFrame = this.webkitRequestAnimationFrame;
+		var requestAnimationFrame = this.requestAnimationFrame;
 		//变化数字绝对值小于10直接设置到终点
 		if( Math.abs(duration-current) < 10){
 			time = 1;
@@ -265,7 +265,7 @@ MulitpeTab.prototype = {
 			var c = easeOut(t+=1, current, duration-current, time);
 			if( c != duration){
 				ele.scrollLeft = c;
-				webkitRequestAnimationFrame(run);
+				requestAnimationFrame(run);
 			}
 		};
 		
@@ -286,12 +286,12 @@ MulitpeTab.prototype = {
 			}
 		}
 	},
-	webkitRequestAnimationFrame:(function(){
-		return 	window.webkitRequestAnimationFrame == undefined ? function( run ){
+	requestAnimationFrame:(function(){
+		return 	window.requestAnimationFrame == undefined ? function( run ){
 			setTimeout(function(){
 				run()
 			},20);
-		} : window.webkitRequestAnimationFrame;
+		} : window.requestAnimationFrame;
 	})(),
 	addEventListener:function( type, handle ){
 		

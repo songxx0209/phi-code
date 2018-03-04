@@ -1,0 +1,185 @@
+<html lang="zh-cn">
+
+<head>
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
+    <title>加载底部</title>
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <style>
+	    * {
+	        margin: 0;
+	        padding: 0;
+	        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	        -webkit-text-size-adjust: none;
+	    }
+
+	    html {
+	        font-size: 10px;
+	    }
+
+	    body {
+	        background-color: #f5f5f5;
+	        font-size: 1.2em;
+	    }
+
+	    .header {
+	        height: 44px;
+	        line-height: 44px;
+	        border-bottom: 1px solid #ccc;
+	        background-color: #eee;
+	    }
+
+	    .header h1 {
+	        text-align: center;
+	        font-size: 2rem;
+	        font-weight: normal;
+	    }
+
+	    .content {
+	        max-width: 640px;
+	        margin: 0 auto;
+	        background-color: #fff;
+	    }
+
+	    .content .item {
+	        display: -webkit-box;
+	        display: -webkit-flex;
+	        display: -ms-flexbox;
+	        display: flex;
+	        -ms-flex-align: center;
+	        -webkit-box-align: center;
+	        box-align: center;
+	        -webkit-align-items: center;
+	        align-items: center;
+	        padding: 3.125%;
+	        border-bottom: 1px solid #ddd;
+	        color: #333;
+	        text-decoration: none;
+	    }
+
+	    .content .item img {
+	        display: block;
+	        width: 40px;
+	        height: 40px;
+	        border: 1px solid #ddd;
+	    }
+
+	    .content .item h3 {
+	        display: block;
+	        -webkit-box-flex: 1;
+	        -webkit-flex: 1;
+	        -ms-flex: 1;
+	        flex: 1;
+	        width: 100%;
+	        max-height: 40px;
+	        overflow: hidden;
+	        line-height: 20px;
+	        margin: 0 10px;
+	        font-size: 1.2rem;
+	    }
+
+	    .content .item .date {
+	        display: block;
+	        height: 20px;
+	        line-height: 20px;
+	        color: #999;
+	    }
+
+	    .opacity {
+	        -webkit-animation: opacity 0.3s linear;
+	        animation: opacity 0.3s linear;
+	    }
+
+	    @-webkit-keyframes opacity {
+	        0% {
+	            opacity: 0;
+	        }
+	        100% {
+	            opacity: 1;
+	        }
+	    }
+
+	    @keyframes opacity {
+	        0% {
+	            opacity: 0;
+	        }
+	        100% {
+	            opacity: 1;
+	        }
+	    }
+    </style>
+    <link rel="stylesheet" href="../dist/dropload.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>就当我是新闻页吧</h1>
+    </div>
+    <div class="content">
+        <div class="lists"><a class="item opacity" href="#1"><img src="http://d8.yihaodianimg.com/N05/M03/D4/1E/CgQI0lYEBwWAQIvJAAFyostaOYY12501_80x80.jpg" alt=""><h3>Apple 苹果 iPhone 6s Plus (A1699) 16G 玫瑰金色 移动联通电信4G 全网通手机</h3><span class="date">2015-12-01</span></a><a class="item opacity" href="#2"><img src="http://d9.yihaodianimg.com/N07/M00/6B/E6/CgQIz1ZNQWeALuYuAASH8T5MJzY38001_80x80.jpg" alt=""><h3>Letv 乐视1S 乐1S 移动联通双4G 双卡双待 16GB 金</h3><span class="date">2015-12-02</span></a><a class="item opacity" href="#3"><img src="http://d8.yihaodianimg.com/N08/M0A/6B/E1/ChEi1lZhlgSAEES9AAIPUw3996808600_80x80.jpg" alt=""><h3>NOKIA/诺基亚 2610 nokia 2610 经典诺基亚直板手机 学生备用老人手机 诺基亚低端功能机</h3><span class="date">2015-12-03</span></a><a class="item opacity" href="#4"><img src="http://d6.yihaodianimg.com/N09/M00/78/AA/ChEi2VZpRZCAeyz-AAP2yE5HMTQ17001_80x80.jpg" alt=""><h3>华为 Mate8 NXT-TL00 3GB+32GB版 移动定制 月光银</h3><span class="date">2015-12-04</span></a><a class="item opacity" href="#5"><img src="http://d6.yihaodianimg.com/N07/M01/98/48/CgQI0FY3GNuAeKARAARTi1sTc0E99401_80x80.jpg" alt=""><h3>锤子 坚果 32GB 红色 移动联通4G手机 双卡双待</h3><span class="date">2015-12-05</span></a><a class="item opacity" href="#6"><img src="http://d9.yihaodianimg.com/N05/M0A/B6/5A/CgQI0lX45JWANx7NAANWUytnWfY51201_80x80.jpg" alt=""><h3>华为荣耀7i ATH-AL00 3G内存增强版 移动联通电信4G 沙滩金 双卡双待</h3><span class="date">2015-12-06</span></a><a class="item opacity" href="#7"><img src="http://d6.yihaodianimg.com/N08/M08/94/33/ChEi1FX_oHWAWJYUAAL4rKvikTE54401_80x80.jpg" alt=""><h3>小米 红米2A 增强版 白色 16G 移动4G手机 官网版 双卡双待</h3><span class="date">2015-12-07</span></a><a class="item opacity" href="#8"><img src="http://d8.yihaodianimg.com/N06/M06/8A/B9/CgQIzVQj87GAZ2-bAAMyoIZt8v863301_80x80.jpg" alt=""><h3>Samsung 三星 Galaxy Note4 N9108V 移动4G手机 幻影白</h3><span class="date">2015-12-08</span></a><a class="item opacity" href="#9"><img src="http://d8.yihaodianimg.com/N06/M04/DC/24/ChEbu1T4HVeASjwEAAGHikpYgyQ10901_80x80.jpg" alt=""><h3>HTC Desire 826T 魔幻蓝 移动4G手机 双卡双待</h3><span class="date">2015-12-09</span></a><a class="item opacity" href="#10"><img src="http://d8.yihaodianimg.com/N05/M05/BE/72/ChEbulTYbhyAY_DmAAGmsWjdGgY32601_80x80.jpg" alt=""><h3>华为 荣耀畅玩4X Che2-UL00 联通标配版4G手机 双卡双待双通 白色</h3><span class="date">2015-12-10</span></a>
+    	</div>
+        <div class="dropload-down">
+            <div class="dropload-refresh">↑上拉加载更多</div>
+        </div>
+    </div>
+    <!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+    <script src="js/zepto.min.js"></script>
+    <script src="../dist/dropload.min.js"></script>
+    <script>
+    $(function() {
+        // 页数
+        var page = 0;
+        // 每页展示5个
+        var size = 5;
+
+        // dropload
+        $('.content').dropload({
+            scrollArea: window,
+            loadDownFn: function(me) {
+                page++;
+                // 拼接HTML
+                var result = '';
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://ons.me/tools/dropload/json.php?page=' + page + '&size=' + size,
+                    dataType: 'json',
+                    success: function(data) {
+                        var arrLen = data.length;
+                        if (arrLen > 0) {
+                            for (var i = 0; i < arrLen; i++) {
+                                result += '<a class="item opacity" href="' + data[i].link + '">' +
+                                    '<img src="' + data[i].pic + '" alt="">' +
+                                    '<h3>' + data[i].title + '</h3>' +
+                                    '<span class="date">' + data[i].date + '</span>' +
+                                    '</a>';
+                            }
+                            // 如果没有数据
+                        } else {
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+                        }
+                        // 为了测试，延迟1秒加载
+                        setTimeout(function() {
+                            // 插入数据到页面，放到最后面
+                            $('.lists').append(result);
+                            // 每次数据插入，必须重置
+                            me.resetload();
+                        }, 1000);
+                    },
+                    error: function(xhr, type) {
+                        alert('Ajax error!');
+                        // 即使加载出错，也得重置
+                        me.resetload();
+                    }
+                });
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>
