@@ -3,19 +3,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     margin: 0;
     padding: 0;
 }
-
 ul {
     list-style: none;
 }
-
 a img {
     border: 0;
 }
-
 .h5-plugin-tab {
-    /* position: relative;
-    z-index: 1000;
-    overflow: hidden; */
     position: fixed;
     top: 0;
     width: 100%;
@@ -23,7 +17,6 @@ a img {
     z-index: 1000;
     overflow: hidden;
 }
-
 .h5-plugin-tab-in {
     position: relative;
     white-space: nowrap;
@@ -32,10 +25,11 @@ a img {
     overflow: scroll;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    /* margin-top: .4rem; */
     margin: .4rem 0 .2rem 0;
 }
-
+.h5-plugin-tab-in::-webkit-scrollbar {
+    display:none
+}
 .h5-plugin-tab ul li {
     display: inline-block;
     font-size: .42rem;
@@ -43,6 +37,7 @@ a img {
     width: 20%;
     text-align: center;
     margin-left: 0 !important;
+    margin-right: 0 !important;
     padding-bottom: .21rem;
     position: relative;
 }
@@ -56,18 +51,15 @@ a img {
     bottom: 0;
     left: 42%;
 }
-
 .h5-plugin-tab ul li a {
     text-decoration: none;
 }
-
 .h5-plugin-tab .on a {
     color: #469cf8;
 }
 .h5-plugin-tab .on::after {
     background-color: #469cf8;
 }
-
 .h5-plugin-tab.center {
     text-align: center;
     height: 40px;
@@ -76,11 +68,9 @@ a img {
     z-index: 1000;
     border-bottom: 1px solid #dcdcdc;
 }
-
 .h5-plugin-tab.center ul {
     display: -webkit-box;
 }
-
 .h5-plugin-tab.center li {
     display: block !important;
     -webkit-box-flex: 1;
@@ -88,8 +78,6 @@ a img {
 
 /*内容*/
 .tab_con {
-    /* overflow: hidden;
-    margin-top: 1.1rem; */
     width: 100%;
     position: absolute;
     top: 1.1rem;
@@ -100,12 +88,11 @@ a img {
     position: relative;
 }
 .tab_list {
-    /* float:left;
-    overflow: hidden; */
     position: absolute;
     bottom: 0;
     top: 0;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 .tab_list .tab_list_item {
     margin-left: .033rem;
@@ -113,14 +100,15 @@ a img {
     float: left;
     margin-top: .27rem;
 }
-.tab_list .tab_list_item div {
+.tab_list .tab_list_item a {
+    display: block;
     margin-bottom: .14rem;
     width: 3.3rem;
     height: 1.87rem;
-        border: 1px solid #eee;
+    border: 1px solid #eee;
     box-sizing: border-box;
 }
-.tab_list .tab_list_item div img {
+.tab_list .tab_list_item a img {
     width: 100%;
     height: 100%;
 }
@@ -139,4 +127,9 @@ a img {
     font-size: .24rem;
     color: #aeaeae;
     margin-top: .2rem;
+}
+.lists:after {
+    content: '';
+    display: block;
+    clear: both;
 }
