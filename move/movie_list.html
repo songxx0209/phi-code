@@ -93,6 +93,10 @@
 
             for (var i = 0; i < tabLength; i++) {
                 tabList[i].style.width = windowWidth + "px";
+                tabList[i].style.position = "fixed";
+                tabList[i].style.left = i*windowWidth + "px";
+                tabList[i].style.bottom = 0;
+                // tabList[i].style.height = "1000px";
                 // tabList[i].style.float = 'left';
                 // tabList[i].style.padding = '0';
                 // tabList[i].style.margin = '0';
@@ -101,8 +105,9 @@
             }
 
             tabBox.style.overflow = 'hidden';
-            tabBox.style.position = 'relative';
+            // tabBox.style.position = 'relative';
             tabBox.style.width = windowWidth * tabLength + "px";
+            tabBox.style.height = "100%";
 
             tab = new MulitpeTab($('#J_Tabs2'), {
                 // tab之间的间距
@@ -119,10 +124,10 @@
                 // console.log('wowo');
                 if (tabData[current].page === 0) {
                     setTimeout(function(){
-                        $('.tab_list').eq(current).css({'height': 'auto'}).siblings().css({'height': '10px'});
+                        // $('.tab_list').eq(current).css({'height': 'auto'}).siblings().css({'height': '10px'});
 
-                        $('.tab_con').dropload({
-                            scrollArea: window,
+                        $('.tab_list').eq(current).dropload({
+                            // scrollArea: window,
                             // scrollArea: $('.tab_con'), 
                             loadDownFn: function(me) {
                                 // 拼接HTML
@@ -153,6 +158,8 @@
                                             // 插入数据到页面，放到最后面
                                             // $('.lists').append(result);
                                             tabList[current].innerHTML += tabContent;
+                                            // tabList[current].getElementsByClassName('ss')[0].innerHTML += tabContent;
+                                            // $('.tab_list').eq(current)
                                             // 每次数据插入，必须重置
                                             me.resetload();
                                         }, 1000);
