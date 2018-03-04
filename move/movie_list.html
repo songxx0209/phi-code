@@ -157,8 +157,8 @@
                                         setTimeout(function() {
                                             // 插入数据到页面，放到最后面
                                             // $('.lists').append(result);
-                                            tabList[current].innerHTML += tabContent;
-                                            // tabList[current].getElementsByClassName('ss')[0].innerHTML += tabContent;
+                                            // tabList[current].innerHTML += tabContent;
+                                            tabList[current].getElementsByClassName('ss')[0].innerHTML += tabContent;
                                             // $('.tab_list').eq(current)
                                             // 每次数据插入，必须重置
                                             me.resetload();
@@ -172,7 +172,7 @@
                                 });
                             }
                         });
-                    }, 200);
+                    }, 200);    
                 }
                 
             });
