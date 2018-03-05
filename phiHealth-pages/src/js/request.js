@@ -50,36 +50,41 @@
     var disparam = JSON.stringify(param);
 
     if(urlParams.Shareflag && urlParams.Shareflag.toString() === "1"){
-       // createa("phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId);
-       // window.location.href = "https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW";
-        setTimeout(function () {
-            window.location.href ="phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
-        },0);
         document.getElementsByClassName("footersticky")[0].style.visibility='visible';
         if(isWeiXin()){
             document.getElementsByClassName("headertop")[0].addEventListener("click", function() {
                     document.getElementsByClassName("headertop")[0].style.visibility='hidden'
             }, !1);
+        }else{
+            if(isIos()){
+                setTimeout(function () {
+                    window.location.href ="https://oia.phicomm.com/article/?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
+                },3000)
+            }else{
+                window.location.href ="phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
+            }
         }
     }
     document.getElementsByClassName("callbackthis")[0].addEventListener("click", function() {
         if(isWeiXin()){
             document.getElementsByClassName("headertop")[0].style.visibility='visible'
         }else{
-            testApp()
+            if(isIos()){
+                window.location.href ="https://oia.phicomm.com/article/?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
+            }else{
+                testApp()
+            }
+
         }
     }, !1);
     function testApp() {
         var timeout, t = 1000, hasApp = true;
         setTimeout(function () {
             if (!hasApp) {
-                //createa("https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW");
                 window.location.href = "https://phiclouds.phicomm.com/ota/Service/App/downloadpage?appid=2017030031&channel=1NEW";
             }
         }, 2000);
         var t1 = Date.now();
-        //createa("phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId);
-
         window.location.href ="phicareapp://phicomm.phicare/awakenlink/html/scheme?type=discovery_"+JSON.parse(disparam).type+"&resourceId="+urlParams.resourceId;
         timeout = setTimeout(function () {
             var t2 = Date.now();
@@ -88,15 +93,7 @@
             }
         }, t);
     }
-    function createa(ahref) {
-        setTimeout(function() {  // 必须要使用settimeout
-            var a = document.createElement("a"); //创建a元素
-            a.setAttribute("href",ahref); a.style.display = "none"; document.body.appendChild(a);
-            var t = document.createEvent("HTMLEvents"); // 返回新创建的 Event 对象，具有指定的类型。
-            t.initEvent("click", !1, !1) // 初始化新事件对象的属性
-            a.dispatchEvent(t)  // 绑定事件
-        }, 0)
-    }
+
     // 判断是否是微信浏览器
     function isWeiXin(){
         var ua = window.navigator.userAgent.toLowerCase();
@@ -105,6 +102,10 @@
         }else{
             return false;
         }
+    }
+    function isIos(){
+        var u = navigator.userAgent;
+        return !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
     }
     //获取Url中的所有参数
     function _GetUrlParams() {
