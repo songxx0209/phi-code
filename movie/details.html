@@ -8,14 +8,12 @@
         .list img {
             width: 100%;
             height: 6.4rem;
-            margin-bottom: .14rem;
+            margin: .06rem 0 .33rem;
         }
 
         .list p {
-            padding: 0 .26rem;
-            overflow: hidden;
-            /*white-space: nowrap;*/
-            text-overflow: ellipsis;
+            margin-left: .33rem;
+            color: #373737;
         }
 
         .list p:nth-of-type(1) {
@@ -26,12 +24,18 @@
 
         .list p:nth-of-type(2) {
             font-size: .3rem;
-            color: #aeaeae;
-            margin-top: .26rem;
+            opacity: .5;
+            padding: .24rem 0 .6rem;
+        }
+
+        .line {
+            margin: 0 .4rem;
+            height: .01rem;
+            background-color: #eaeaea;
         }
 
         .btns {
-            margin-top: 1rem;
+            margin-top: 2.4rem;
             text-align: center;
         }
 
@@ -46,7 +50,7 @@
         }
 
         #play_btn {
-            margin-left: .6rem;
+            margin-left: .64rem;
         }
 
         .btns span.active {
@@ -62,6 +66,7 @@
     <div id="wrap">
         <div class="list">
         </div>
+        <p class="line"></p>
         <div class="btns">
             <span class="active" id="down_btn">下载至NAS存储</span>
             <span id="play_btn">播放</span>
@@ -96,6 +101,12 @@
             }
             return theRequest;
         }
+
+        //点击按钮切换按钮效果
+        $('.btns span').click(function () {
+            $('.btns span').removeClass('active');
+            $(this).addClass('active');
+        });
     </script>
 </body>
 

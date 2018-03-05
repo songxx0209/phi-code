@@ -2,6 +2,7 @@
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
+    color: #373737;
 }
 ul {
     list-style: none;
@@ -94,8 +95,10 @@ a img {
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
 }
+.tab_list .tab_list_item:nth-of-type(3n+2) {
+    padding: 0 .05rem;
+}
 .tab_list .tab_list_item {
-    margin-left: .033rem;
     width: 3.3rem;
     float: left;
     margin-top: .27rem;
@@ -105,6 +108,7 @@ a img {
     margin-bottom: .14rem;
     width: 3.3rem;
     height: 1.87rem;
+    background: #eee;
     border: 1px solid #eee;
     box-sizing: border-box;
 }
@@ -124,8 +128,8 @@ a img {
     font-weight: bold;
 }
 .tab_list .tab_list_item p:nth-of-type(2) {
-    font-size: .24rem;
-    color: #aeaeae;
+    font-size: .29rem;
+    opacity: .5;
     margin-top: .2rem;
 }
 .lists:after {
