@@ -56,8 +56,6 @@ $.ajax({
         tab.addEventListener("onChange", function (index, prevIndex, $element) {
             //当前选中的序号，上一次的序号，当前选中的元素
             tabIndex = index;
-            // tabId = tabData[tabIndex].id;
-
             init.translate(tabBox, windowWidth, tabIndex);
             if (tabData[tabIndex].page === 0) {
 
@@ -65,13 +63,14 @@ $.ajax({
                     $('.tab_list').eq(tabIndex).dropload({
                         // scrollArea: window,
                         loadDownFn: function(me) {
+                            tabData[tabIndex].page++;
                             // 拼接HTML
                             $.ajax({
                                 type: 'GET',    
                                 url: 'https://feixunbeta.yinyuetai.com/api/feixun/get-videos?area='+tabData[tabIndex].id+'&offset='+tabData[tabIndex].page+'&item='+pagesize,
                                 dataType: 'application/json',
                                 success: function(data) {
-                                    tabData[tabIndex].page++;
+                                    
                                     var movieData = JSON.parse(data).data;
                                     var tabContent = '';
                                     var arrLen = movieData.length;
@@ -96,7 +95,7 @@ $.ajax({
                                 error: function(xhr, type) {
                                     // alert('Ajax error!');
                                     // 即使加载出错，也得重置
-                                    me.resetload();
+                                    // me.resetload();
                                 }
                             });
                         }
