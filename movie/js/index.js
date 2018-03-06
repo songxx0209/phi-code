@@ -64,10 +64,14 @@ $.ajax({
                         // scrollArea: window,
                         loadDownFn: function(me) {
                             tabData[tabIndex].page++;
+
+                            var pageStart = 1 + pagesize*(tabData[tabIndex].page - 1);
+                            var pageEnd = pageStart + pagesize - 1;
+
                             // 拼接HTML
                             $.ajax({
-                                type: 'GET',    
-                                url: 'https://feixunbeta.yinyuetai.com/api/feixun/get-videos?area='+tabData[tabIndex].id+'&offset='+tabData[tabIndex].page+'&item='+pagesize,
+                                type: 'GET',
+                                url: 'https://feixunbeta.yinyuetai.com/api/feixun/get-videos?area='+tabData[tabIndex].id+'&offset='+pageStart+'&item='+pageEnd,
                                 dataType: 'application/json',
                                 success: function(data) {
                                     

@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
     <title>电影详情</title>
     <style>
         .list img {
@@ -35,7 +36,7 @@
         }
 
         .btns {
-            margin-top: 2.4rem;
+            margin: 1rem 0;
             text-align: center;
         }
 
@@ -82,8 +83,6 @@
             dataType: "application/json", //指定服务器返回的数据类型
             success: function(data) {
                 movieData = JSON.parse(data).data;
-
-                console.log(params);
                 $('.list').html('<img src="' + movieData.thumbnail + '" alt="图片"><p>' + movieData.name + '</p><p>' + movieData.desc + '</p>');
             }
         });
