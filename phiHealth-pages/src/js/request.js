@@ -1,10 +1,9 @@
 
 (function() {
     // 浏览器打开情况的适配
-    var head = document.getElementsByTagName('head')[0];
-    if(!/Android|webOS|iPhone|iPod|BlackBerry|Mobile/i.test(navigator.userAgent)) {
-        document.documentElement.style = 'font-size: 75px; width: 750px; margin: 0 auto;';
-    }
+    // if(!/Android|webOS|iPhone|iPod|BlackBerry|Mobile/i.test(navigator.userAgent)) {
+    //     document.documentElement.style = 'font-size: 75px; width: 750px; margin: 0 auto;';
+    // }
     // 执行图片懒加载脚本
     var observer = lozad();
     observer.observe();
